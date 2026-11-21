@@ -46,9 +46,29 @@
             <p>EN <i class="fa-solid fa-caret-down"></i></p>
         </div>
 
-        <div class="nav-signin border">
-            <p class="nav-small">Hello, sign in</p>
+        <div class="nav-signin border" id="account-menu">
+            <p class="nav-small" id="account-greeting">Hello, sign in</p>
             <p class="nav-bold">Account &amp; Lists <i class="fa-solid fa-caret-down"></i></p>
+
+            <!-- ===== Account dropdown (shown after sign in) ===== -->
+            <div class="account-dropdown" id="account-dropdown" hidden>
+                <div class="account-head">
+                    <div class="account-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="account-head-text">
+                        <strong id="account-name">Guest</strong>
+                        <span id="account-email"></span>
+                    </div>
+                </div>
+                <button type="button" class="account-item" id="account-orders">
+                    <i class="fa-solid fa-box"></i> Your Orders
+                </button>
+                <button type="button" class="account-item" id="account-profile">
+                    <i class="fa-solid fa-user-gear"></i> Your Profile
+                </button>
+                <button type="button" class="account-item" id="signout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sign out
+                </button>
+            </div>
         </div>
 
         <div class="nav-return border">
@@ -62,6 +82,20 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <p class="nav-bold">Cart</p>
+
+            <!-- ===== Mini cart panel (toggled by script.js) ===== -->
+            <div class="cart-panel" id="cart-panel" hidden>
+                <div class="cart-panel-head">
+                    <span>Your Cart</span>
+                    <button type="button" class="cart-close" id="cart-close" aria-label="Close cart">&times;</button>
+                </div>
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+                <button type="button" class="cart-checkout" id="cart-checkout">Proceed to checkout</button>
+            </div>
         </div>
     </nav>
 
@@ -102,54 +136,55 @@
 
     <!-- ===== Category cards ===== -->
     <section class="shop-section">
-        <div class="box">
+        <div class="box" data-category="Beauty">
             <h2>Health &amp; Personal Care</h2>
             <div class="box-img" style="background-image:url('box1_image.jpg')"></div>
             <a href="#" class="see-more">See more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Electronics">
             <h2>Shop Deals in Electronics</h2>
             <div class="box-img" style="background-image:url('box2_image.jpg')"></div>
             <a href="#" class="see-more">See more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Home &amp; Kitchen">
             <h2>Furniture for your Home</h2>
             <div class="box-img" style="background-image:url('box3_image.jpg')"></div>
             <a href="#" class="see-more">Shop now</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Electronics">
             <h2>Electronics</h2>
             <div class="box-img" style="background-image:url('box4_image.jpg')"></div>
             <a href="#" class="see-more">See more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Beauty">
             <h2>Beauty Picks</h2>
             <div class="box-img" style="background-image:url('box5_image.jpg')"></div>
             <a href="#" class="see-more">See more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Pet Supplies">
             <h2>Pet Care</h2>
             <div class="box-img" style="background-image:url('box6_image.jpg')"></div>
             <a href="#" class="see-more">See more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Toys &amp; Games">
             <h2>New Arrivals in Toys</h2>
             <div class="box-img" style="background-image:url('box7_image.jpg')"></div>
             <a href="#" class="see-more">Shop now</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-category="Fashion">
             <h2>Discover Fashion Trends</h2>
             <div class="box-img" style="background-image:url('box8_image.jpg')"></div>
             <a href="#" class="see-more">Explore now</a>
         </div>
     </section>
+    <p class="no-results" id="cards-no-results" hidden>No categories match your search.</p>
 
     <!-- ===== Product slider row ===== -->
     <section class="product-row">
@@ -158,22 +193,63 @@
             <a href="#" class="see-more">See all deals</a>
         </div>
         <div class="row-scroll">
-            <div class="deal"><div class="deal-img" style="background-image:url('box4_image.jpg')"></div><span class="badge">Up to 40% off</span><span class="deal-tag">Deal of the Day</span><p>Electronics &amp; Accessories</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box2_image.jpg')"></div><span class="badge">Up to 55% off</span><span class="deal-tag">Limited time deal</span><p>Headphones &amp; Speakers</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box3_image.jpg')"></div><span class="badge">Min. 30% off</span><span class="deal-tag">Limited time deal</span><p>Furniture &amp; Decor</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box5_image.jpg')"></div><span class="badge">Up to 60% off</span><span class="deal-tag">Deal of the Day</span><p>Beauty &amp; Makeup</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box8_image.jpg')"></div><span class="badge">Up to 70% off</span><span class="deal-tag">Limited time deal</span><p>Men &amp; Women Fashion</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box7_image.jpg')"></div><span class="badge">Up to 50% off</span><span class="deal-tag">Deal of the Day</span><p>Toys &amp; Games</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box6_image.jpg')"></div><span class="badge">Up to 35% off</span><span class="deal-tag">Limited time deal</span><p>Pet Supplies</p></div>
-            <div class="deal"><div class="deal-img" style="background-image:url('box1_image.jpg')"></div><span class="badge">Up to 45% off</span><span class="deal-tag">Deal of the Day</span><p>Health &amp; Personal Care</p></div>
+            <div class="deal" data-id="d1" data-category="Electronics" data-name="Electronics &amp; Accessories" data-price="12999">
+                <div class="deal-img" style="background-image:url('box4_image.jpg')"></div>
+                <span class="badge">Up to 40% off</span><span class="deal-tag">Deal of the Day</span>
+                <p>Electronics &amp; Accessories</p><p class="deal-price">₹12,999</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d2" data-category="Electronics" data-name="Headphones &amp; Speakers" data-price="3499">
+                <div class="deal-img" style="background-image:url('box2_image.jpg')"></div>
+                <span class="badge">Up to 55% off</span><span class="deal-tag">Limited time deal</span>
+                <p>Headphones &amp; Speakers</p><p class="deal-price">₹3,499</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d3" data-category="Home &amp; Kitchen" data-name="Furniture &amp; Decor" data-price="8999">
+                <div class="deal-img" style="background-image:url('box3_image.jpg')"></div>
+                <span class="badge">Min. 30% off</span><span class="deal-tag">Limited time deal</span>
+                <p>Furniture &amp; Decor</p><p class="deal-price">₹8,999</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d4" data-category="Beauty" data-name="Beauty &amp; Makeup" data-price="1299">
+                <div class="deal-img" style="background-image:url('box5_image.jpg')"></div>
+                <span class="badge">Up to 60% off</span><span class="deal-tag">Deal of the Day</span>
+                <p>Beauty &amp; Makeup</p><p class="deal-price">₹1,299</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d5" data-category="Fashion" data-name="Men &amp; Women Fashion" data-price="2199">
+                <div class="deal-img" style="background-image:url('box8_image.jpg')"></div>
+                <span class="badge">Up to 70% off</span><span class="deal-tag">Limited time deal</span>
+                <p>Men &amp; Women Fashion</p><p class="deal-price">₹2,199</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d6" data-category="Toys &amp; Games" data-name="Toys &amp; Games" data-price="999">
+                <div class="deal-img" style="background-image:url('box7_image.jpg')"></div>
+                <span class="badge">Up to 50% off</span><span class="deal-tag">Deal of the Day</span>
+                <p>Toys &amp; Games</p><p class="deal-price">₹999</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d7" data-category="Pet Supplies" data-name="Pet Supplies" data-price="1599">
+                <div class="deal-img" style="background-image:url('box6_image.jpg')"></div>
+                <span class="badge">Up to 35% off</span><span class="deal-tag">Limited time deal</span>
+                <p>Pet Supplies</p><p class="deal-price">₹1,599</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
+            <div class="deal" data-id="d8" data-category="Beauty" data-name="Health &amp; Personal Care" data-price="649">
+                <div class="deal-img" style="background-image:url('box1_image.jpg')"></div>
+                <span class="badge">Up to 45% off</span><span class="deal-tag">Deal of the Day</span>
+                <p>Health &amp; Personal Care</p><p class="deal-price">₹649</p>
+                <button type="button" class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
+            </div>
         </div>
+        <p class="no-results" id="deals-no-results" hidden>No deals match your search.</p>
     </section>
 
     <!-- ===== Sign-in prompt ===== -->
     <section class="signin-box">
-        <p>See personalized recommendations</p>
-        <button class="signin-btn">Sign in</button>
-        <p class="small">New customer? <a href="#">Start here.</a></p>
+        <p id="signin-prompt">See personalized recommendations</p>
+        <button class="signin-btn" id="signin-action">Sign in</button>
+        <p class="small" id="signin-sub">New customer? <a href="#" id="start-here">Start here.</a></p>
     </section>
 </main>
 
@@ -235,5 +311,59 @@
     </div>
 </footer>
 
+<!-- ===== Sign in / Create account modal ===== -->
+<div class="auth-overlay" id="auth-overlay" hidden>
+    <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button type="button" class="auth-close" id="auth-close" aria-label="Close">&times;</button>
+        <div class="auth-brand"><div class="logo"></div><span class="logo-in">.in</span></div>
+        <h2 id="auth-title" class="auth-title">Sign in</h2>
+
+        <div class="auth-tabs" role="tablist">
+            <button type="button" class="auth-tab active" data-mode="login" role="tab" aria-selected="true">Sign in</button>
+            <button type="button" class="auth-tab" data-mode="register" role="tab" aria-selected="false">Create account</button>
+        </div>
+
+        <p class="auth-message" id="auth-message" hidden></p>
+
+        <form id="login-form" class="auth-form" novalidate>
+            <label>Email or mobile number
+                <input type="text" id="login-email" autocomplete="username" placeholder="you@example.com" required>
+            </label>
+            <label>Password
+                <span class="password-field">
+                    <input type="password" id="login-password" autocomplete="current-password" placeholder="Enter your password" required>
+                    <button type="button" class="pw-toggle" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                </span>
+            </label>
+            <label class="remember"><input type="checkbox" id="remember-me"> Remember me</label>
+            <button type="submit" class="auth-submit">Sign in</button>
+            <p class="auth-switch">New to Amazone? <button type="button" class="auth-link" data-mode="register">Create an account</button></p>
+        </form>
+
+        <form id="register-form" class="auth-form" hidden novalidate>
+            <label>Your name
+                <input type="text" id="reg-name" autocomplete="name" placeholder="Asif Ghaus" required>
+            </label>
+            <label>Email
+                <input type="email" id="reg-email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label>Password <span class="hint">(at least 6 characters)</span>
+                <span class="password-field">
+                    <input type="password" id="reg-password" autocomplete="new-password" placeholder="Create a password" required>
+                    <button type="button" class="pw-toggle" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                </span>
+            </label>
+            <label>Re-enter password
+                <input type="password" id="reg-confirm" autocomplete="new-password" placeholder="Repeat your password" required>
+            </label>
+            <button type="submit" class="auth-submit">Create your account</button>
+            <p class="auth-switch">Already have an account? <button type="button" class="auth-link" data-mode="login">Sign in</button></p>
+        </form>
+
+        <p class="auth-note"><i class="fa-solid fa-circle-info"></i> Demo only — details are saved in this browser. Do not use a real password.</p>
+    </div>
+</div>
+
+<script src="script.js" defer></script>
 </body>
 </html>
