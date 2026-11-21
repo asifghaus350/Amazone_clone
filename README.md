@@ -1,6 +1,6 @@
 # 🛒 Amazone Clone
 
-A responsive clone of the **Amazon India homepage**, built with plain **HTML5** and **CSS3**: no frameworks and no build step.
+A responsive clone of the **Amazon India homepage**, built with plain **HTML5**, **CSS3** and a little **vanilla JavaScript**: no frameworks, no dependencies and no build step.
 
 🔗 **Live demo:** https://asifghaus350.github.io/Amazone_clone/
 
@@ -9,6 +9,18 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 ---
 
 ## ✨ Features
+
+At a glance:
+
+| Area | Highlights |
+|---|---|
+| Header | Dark navbar, search + category dropdown, cart badge, account menu |
+| Browse | Hero banner, 8 category cards, Today's Deals carousel |
+| Search | Live text filter + category filter with "no results" hints |
+| Cart | Add to cart, live count, mini cart, quantity controls, saved locally |
+| Account | Sign up, sign in, remember me, profile dropdown, sign out |
+| Design | Responsive from 4-column desktop to 1-column mobile |
+| Extras | Smooth scrolling, hover states, password show/hide, accessible dialogs |
 
 ### Header
 - Amazon-style dark navbar (`#131921`) with logo and **“Deliver to India”** location
@@ -57,9 +69,17 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 | 560–800px | 2 columns | Address and deals link hidden |
 | < 560px | 1 column | Search moves to its own row |
 
-<p align="center">
-  <img src="screenshots/mobile.png" alt="Mobile preview" width="300">
-</p>
+---
+
+## 📸 Screenshots
+
+| Desktop homepage | Cart panel |
+|---|---|
+| ![Desktop preview](screenshots/desktop.png) | ![Cart panel with items and total](screenshots/cart-panel.jpg) |
+
+| Sign-in modal | Mobile layout |
+|---|---|
+| ![Sign in modal](screenshots/signin-modal.jpg) | ![Mobile preview](screenshots/mobile.png) |
 
 ---
 
@@ -80,11 +100,15 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 Amazone_clone/
 ├── index.html          # Page markup
 ├── style.css           # All styles + responsive breakpoints
-├── script.js           # Search filter + cart logic
+├── script.js           # Search filter, cart and sign-in logic
 ├── amazon_logo.png     # Logo
 ├── hero_image.jpg      # Hero banner
 ├── box1_image.jpg … box8_image.jpg   # Category card images
 └── screenshots/        # README previews
+    ├── desktop.png         # Desktop homepage
+    ├── mobile.png          # Mobile layout
+    ├── cart-panel.jpg      # Mini cart
+    └── signin-modal.jpg    # Sign-in modal
 ```
 
 ---
@@ -107,6 +131,64 @@ xdg-open index.html   # Linux
 ```
 
 **Recommended:** open the folder in VS Code and use the **Live Server** extension (*right-click `index.html` → Open with Live Server*) so the page reloads automatically while you edit.
+
+---
+
+## 🧪 How to Use
+
+There are no pre-created accounts or products — everything runs locally in your browser.
+
+### 🔍 Search
+1. Type a word such as `beauty`, `electronics` or `toys` in the search box.
+2. Category cards and deals filter **as you type**.
+3. Use the dropdown next to the search box to filter by category only.
+4. Press **Enter** or click the orange search button to jump to the results.
+
+### 🛒 Cart
+1. Click **Add to cart** on any deal in the *Today's Deals* row — the badge in the navbar increases.
+2. Click the **Cart** icon to open the mini cart.
+3. Use **+ / −** to change quantities, the bin icon to remove an item, and see the total update.
+4. The cart is saved in `localStorage`, so it is still there after a refresh.
+
+### 👤 Sign up / Sign in
+1. Click **Account & Lists** (or **Sign in**) — the sign-in modal opens.
+2. Choose **Create account**, enter a name, email, password (6+ characters) and confirm it.
+3. You are signed in automatically: the navbar shows *Hello, Asif* (or your first name) and the homepage shows a welcome message.
+4. Sign out from the **account dropdown** or the homepage button.
+
+**Demo data you can use to try it:**
+
+| Field | Value |
+|---|---|
+| Name | `Demo User` |
+| Email | `demo@example.com` |
+| Password | `demo123` |
+
+> ⚠️ There is no shared database — accounts are stored **only in your own browser**. Use a throwaway password, never a real one.
+
+---
+
+## 🌿 Git Workflow (branch & pull request)
+
+Development happens on a feature branch; `main` stays clean and is updated through a Pull Request.
+
+```bash
+# 1. Make sure you are on main and it is up to date
+git checkout main
+git pull origin main
+
+# 2. Create and switch to a feature branch
+git checkout -b user/asif/nov
+
+# 3. Work, then stage and commit
+git add .
+git commit -m "Describe your change"
+
+# 4. Push the branch to GitHub
+git push -u origin user/asif/nov
+```
+
+Then on GitHub: open the repo → **Compare & pull request** → base `main` ← compare `user/asif/nov` → create the PR → merge after review.
 
 ---
 
