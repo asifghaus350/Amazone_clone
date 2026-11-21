@@ -28,6 +28,22 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 - **Today's Deals** horizontal scroll row with red discount badges (`Up to 40% off`, `Deal of the Day`, …)
 - **Sign-in prompt** with the yellow Amazon button
 
+### Interactive features (JavaScript)
+- **Live search** — type in the search box to instantly filter category cards and deals
+- **Category dropdown** — narrow results to Electronics, Fashion, Beauty, etc.
+- **"No results" hints** shown when nothing matches
+- **Add to cart** button on every deal with a live cart count in the navbar
+- **Mini cart panel** — review items, change quantities, remove items and see the total
+- Cart contents are saved in **localStorage**, so they survive a page refresh
+
+### Sign in / Create account (JavaScript demo)
+- **Account & Lists** opens a sign-in modal; after signing in it shows an account dropdown
+- **Create account** form with name, email, password and confirm-password validation
+- **Sign in** form with error messages and a **Remember me** option (localStorage vs sessionStorage)
+- Password show/hide toggle, Escape / backdrop to close
+- Sign-out available from the dropdown and the homepage prompt
+- ⚠️ Demo only: accounts are saved as plain text in this browser — do **not** use a real password
+
 ### Footer
 - **Back to top** link with smooth scrolling
 - 4 link columns: *Get to Know Us*, *Connect with Us*, *Make Money with Us*, *Let Us Help You*
@@ -54,6 +70,7 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 | HTML5 | Semantic page structure (`header`, `nav`, `main`, `section`, `footer`) |
 | CSS3 | Flexbox, CSS Grid, gradients, media queries |
 | [Font Awesome 6](https://fontawesome.com/) | Icons (location, search, cart, menu) |
+| JavaScript (vanilla) | `script.js` | Search filter, add to cart, live cart count and persistence |
 
 ---
 
@@ -63,6 +80,7 @@ A responsive clone of the **Amazon India homepage**, built with plain **HTML5** 
 Amazone_clone/
 ├── index.html          # Page markup
 ├── style.css           # All styles + responsive breakpoints
+├── script.js           # Search filter + cart logic
 ├── amazon_logo.png     # Logo
 ├── hero_image.jpg      # Hero banner
 ├── box1_image.jpg … box8_image.jpg   # Category card images
@@ -110,8 +128,10 @@ xdg-open index.html   # Linux
 ## 🗺️ Roadmap
 
 - [x] Responsive homepage UI
-- [ ] JavaScript: working search filter
-- [ ] JavaScript: add to cart with live cart count
+- [x] JavaScript: working search filter
+- [x] JavaScript: add to cart with live cart count
+- [x] Mini cart panel with quantity controls (localStorage)
+- [x] Sign in / create account (localStorage demo)
 - [ ] Auto-sliding hero carousel
 - [ ] Product detail and cart pages
 - [ ] Backend (Node.js / Express) with product database and login
